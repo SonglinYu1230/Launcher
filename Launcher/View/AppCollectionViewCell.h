@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AppCollectionViewCell.h
 //  Launcher
 //
 //  Created by why001 on 13/04/2017.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UICollectionViewController
+@interface AppCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic, copy) NSString *name;
 
 @end
-
