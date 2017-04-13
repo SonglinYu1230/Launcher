@@ -16,25 +16,27 @@ static NSString *kCellIdentifier = @"Cell Identifier";
 @end
 
 @implementation ViewController {
-    NSArray *names;
+    NSArray *_appNames;
+    NSArray *_appIcons;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    names = @[@"WeChat", @"Email", @"Dictionary", @"Music", @"Gallery", @"Reddit", @"Google", @"Instagram", @"Pinterest", @"Calender", @"Twitter", @"Drive", @"Youtube"];
-    
+    _appNames = @[@"WeChat", @"Email", @"Dictionary", @"Music", @"dribble", @"Reddit", @"Google", @"Instagram", @"Pinterest", @"Calender", @"Twitter", @"Facebook", @"Youtube"];
+    _appIcons = @[@"UMS_wechat_icon", @"UMS_email_icon", @"dictionary", @"music", @"dribble", @"reddit", @"google", @"UMS_instagram", @"UMS_pinterest_icon", @"calender", @"UMS_twitter_icon", @"facebook", @"youtube"];
     [self.collectionView registerClass:[AppCollectionViewCell class] forCellWithReuseIdentifier:kCellIdentifier];
 }
 
 #pragma mark - UICollectionViewDataSource Methods
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return names.count;
+    return _appNames.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AppCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
-    cell.name = names[indexPath.item];
+    cell.name = _appNames[indexPath.item];
+    cell.image = [UIImage imageNamed:_appIcons[indexPath.item]];
     return cell;
 }
 @end

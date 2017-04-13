@@ -22,17 +22,12 @@
     if (!(self = [super initWithFrame:frame])) return nil;
     
     UIView *selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-    selectedBackgroundView.backgroundColor = [UIColor orangeColor];
+    selectedBackgroundView.backgroundColor = [UIColor cyanColor];
     self.selectedBackgroundView = selectedBackgroundView;
-    
-    CGFloat redValue = (arc4random() % 255) / 255.0f;
-    CGFloat blueValue = (arc4random() % 255) / 255.0f;
-    CGFloat greenValue = (arc4random() % 255) / 255.0f;
-    
+
     _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    _imageView.backgroundColor = [UIColor blackColor];
+    _imageView.backgroundColor = [UIColor grayColor];
     _imageView.layer.cornerRadius = 5.f;
-    _imageView.backgroundColor = [UIColor colorWithRed:redValue green:greenValue blue:blueValue alpha:1.0f];
     [self.contentView addSubview:_imageView];
     
     _nameLabel = [UILabel new];
@@ -55,6 +50,13 @@
 
 - (void)setName:(NSString *)name {
     _nameLabel.text = name;
+}
+
+- (void)setImage:(UIImage *)image {
+    if (image) {
+        _imageView.backgroundColor = [UIColor clearColor];
+        _imageView.image = image;
+    }
 }
 
 @end

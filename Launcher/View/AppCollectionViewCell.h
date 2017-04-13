@@ -11,5 +11,6 @@
 @interface AppCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, strong) UIImage *image;
 
 @end
