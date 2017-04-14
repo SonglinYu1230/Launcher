@@ -14,6 +14,9 @@
 		0C02D4771E9FC9A600523081 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C02D4761E9FC9A600523081 /* Assets.xcassets */; };
 		0C02D47A1E9FC9A600523081 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C02D4781E9FC9A600523081 /* LaunchScreen.storyboard */; };
 		0CAC9BC91E9FD79D007B44A3 /* AppCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CAC9BC81E9FD79D007B44A3 /* AppCollectionViewCell.m */; };
+		0CEA3F5C1EA05AC70039C274 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA3F5B1EA05AC70039C274 /* AppController.m */; };
+		0CEA3F5F1EA05AE40039C274 /* AppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA3F5E1EA05AE40039C274 /* AppModel.m */; };
+		0CEA3F641EA0665F0039C274 /* AppDispatchCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA3F631EA0665F0039C274 /* AppDispatchCenter.m */; };
 		76DBC248EAE6C5DA883F874E /* libPods-Launcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB21C04BC7BC6BF8754B25D /* libPods-Launcher.a */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +34,13 @@
 		0C02D47B1E9FC9A600523081 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CAC9BC71E9FD79D007B44A3 /* AppCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCollectionViewCell.h; sourceTree = "<group>"; };
 		0CAC9BC81E9FD79D007B44A3 /* AppCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCollectionViewCell.m; sourceTree = "<group>"; };
+		0CEA3F5A1EA05AC70039C274 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		0CEA3F5B1EA05AC70039C274 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
+		0CEA3F5D1EA05AE40039C274 /* AppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppModel.h; sourceTree = "<group>"; };
+		0CEA3F5E1EA05AE40039C274 /* AppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppModel.m; sourceTree = "<group>"; };
+		0CEA3F611EA064C70039C274 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		0CEA3F621EA0665F0039C274 /* AppDispatchCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDispatchCenter.h; sourceTree = "<group>"; };
+		0CEA3F631EA0665F0039C274 /* AppDispatchCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDispatchCenter.m; sourceTree = "<group>"; };
 		1FB21C04BC7BC6BF8754B25D /* libPods-Launcher.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Launcher.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC1D460886D88D3B5792E64 /* Pods-Launcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Launcher.release.xcconfig"; path = "Pods/Target Support Files/Pods-Launcher/Pods-Launcher.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +112,7 @@
 		0C02D4821E9FCCB900523081 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				0CEA3F611EA064C70039C274 /* Constant.h */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -111,6 +122,8 @@
 			children = (
 				0C02D4701E9FC9A600523081 /* ViewController.h */,
 				0C02D4711E9FC9A600523081 /* ViewController.m */,
+				0CEA3F5A1EA05AC70039C274 /* AppController.h */,
+				0CEA3F5B1EA05AC70039C274 /* AppController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -118,6 +131,10 @@
 		0C02D4841E9FCCB900523081 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0CEA3F5D1EA05AE40039C274 /* AppModel.h */,
+				0CEA3F5E1EA05AE40039C274 /* AppModel.m */,
+				0CEA3F621EA0665F0039C274 /* AppDispatchCenter.h */,
+				0CEA3F631EA0665F0039C274 /* AppDispatchCenter.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -271,8 +288,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C02D4721E9FC9A600523081 /* ViewController.m in Sources */,
+				0CEA3F641EA0665F0039C274 /* AppDispatchCenter.m in Sources */,
+				0CEA3F5F1EA05AE40039C274 /* AppModel.m in Sources */,
 				0C02D46F1E9FC9A600523081 /* AppDelegate.m in Sources */,
 				0CAC9BC91E9FD79D007B44A3 /* AppCollectionViewCell.m in Sources */,
+				0CEA3F5C1EA05AC70039C274 /* AppController.m in Sources */,
 				0C02D46C1E9FC9A600523081 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class AppModel;
 @interface AppCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) AppModel *model;
 
 @end

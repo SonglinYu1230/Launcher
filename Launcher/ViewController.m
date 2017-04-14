@@ -8,6 +8,9 @@
 
 #import "ViewController.h"
 #import "AppCollectionViewCell.h"
+#import "AppModel.h"
+#import "AppController.h"
+#import "Constant.h"
 
 static NSString *kCellIdentifier = @"Cell Identifier";
 
@@ -25,6 +28,15 @@ static NSString *kCellIdentifier = @"Cell Identifier";
     _appNames = @[@"WeChat", @"Email", @"Dictionary", @"Music", @"dribble", @"Reddit", @"Google", @"Instagram", @"Pinterest", @"Calender", @"Twitter", @"Facebook", @"Youtube"];
     _appIcons = @[@"UMS_wechat_icon", @"UMS_email_icon", @"dictionary", @"music", @"dribble", @"reddit", @"google", @"UMS_instagram", @"UMS_pinterest_icon", @"calender", @"UMS_twitter_icon", @"facebook", @"youtube"];
     [self.collectionView registerClass:[AppCollectionViewCell class] forCellWithReuseIdentifier:kCellIdentifier];
+    
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGestureRecognizer:)];
+    [self.collectionView addGestureRecognizer:lpgr];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDoubleTapOnHomeButton) name:kDoubleTapOnHomeButton object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UICollectionViewDataSource Methods
@@ -35,8 +47,44 @@ static NSString *kCellIdentifier = @"Cell Identifier";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AppCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
-    cell.name = _appNames[indexPath.item];
-    cell.image = [UIImage imageNamed:_appIcons[indexPath.item]];
+    cell.model = [AppModel modelWithName:_appNames[indexPath.item] icon:[UIImage imageNamed:_appIcons[indexPath.item]]];
     return cell;
 }
+
+- (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath*)destinationIndexPath {
+   
+}
+
+#pragma mark - UICollectionViewDelegate Methods
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+     [self presentViewController:[AppController new] animated:YES completion:nil];
+}
+
+#pragma mark - gesture response
+
+- (void)handleLongPressGestureRecognizer:(UILongPressGestureRecognizer *)gestureRecognizer {
+    switch (gestureRecognizer.state) {
+        case UIGestureRecognizerStateBegan: {
+            NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:[gestureRecognizer locationInView:self.collectionView]];
+            [self.collectionView beginInteractiveMovementForItemAtIndexPath:indexPath];
+        }
+            
+            break;
+        case UIGestureRecognizerStateChanged:
+            [self.collectionView updateInteractiveMovementTargetPosition:[gestureRecognizer locationInView:self.collectionView]];
+            break;
+        case UIGestureRecognizerStateEnded:
+            [self.collectionView endInteractiveMovement];
+            break;
+        default:
+            [self.collectionView cancelInteractiveMovement];
+            break;
+    }
+}
+
+- (void)handleDoubleTapOnHomeButton {
+    
+}
+
 @end

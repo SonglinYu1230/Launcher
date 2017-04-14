@@ -7,6 +7,7 @@
 //
 
 #import "AppCollectionViewCell.h"
+#import "AppModel.h"
 
 @interface AppCollectionViewCell ()
 
@@ -48,14 +49,11 @@
     _nameLabel.frame = CGRectMake((CGRectGetWidth(self.frame) - size.width)/2.f, CGRectGetHeight(self.frame) - size.height, size.width, size.height);
 }
 
-- (void)setName:(NSString *)name {
-    _nameLabel.text = name;
-}
-
-- (void)setImage:(UIImage *)image {
-    if (image) {
+- (void)setModel:(AppModel *)model {
+    _nameLabel.text = model.name;
+    if (model.icon) {
         _imageView.backgroundColor = [UIColor clearColor];
-        _imageView.image = image;
+        _imageView.image = model.icon;
     }
 }
 
