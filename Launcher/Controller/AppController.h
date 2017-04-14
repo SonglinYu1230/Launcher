@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class AppModel;
 @interface AppController : UIViewController
+
+- (instancetype)initWithAppModel:(AppModel *)model;
 
 @end

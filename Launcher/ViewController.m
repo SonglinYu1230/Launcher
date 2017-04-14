@@ -33,6 +33,15 @@ static NSString *kCellIdentifier = @"Cell Identifier";
     [self.collectionView addGestureRecognizer:lpgr];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDoubleTapOnHomeButton) name:kDoubleTapOnHomeButton object:nil];
+    
+    // test
+//    NSString *pointerString = [NSString stringWithFormat:@"%p", self];
+//    NSObject *object;
+//    sscanf([pointerString cStringUsingEncoding:NSUTF8StringEncoding], "%p", &object);
+//    NSLog(@"------------------------end---------------------------");
+//    NSLog(@"%@", object);
+//    NSLog(@"%@", self);
+//    NSLog(@"------------------------end---------------------------");
 }
 
 - (void)dealloc {
@@ -47,7 +56,7 @@ static NSString *kCellIdentifier = @"Cell Identifier";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AppCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
-    cell.model = [AppModel modelWithName:_appNames[indexPath.item] icon:[UIImage imageNamed:_appIcons[indexPath.item]]];
+    cell.model = [self appModleAtIndexPath:indexPath];
     return cell;
 }
 
@@ -58,7 +67,13 @@ static NSString *kCellIdentifier = @"Cell Identifier";
 #pragma mark - UICollectionViewDelegate Methods
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-     [self presentViewController:[AppController new] animated:YES completion:nil];
+    [self presentViewController:[[AppController alloc] initWithAppModel:[self appModleAtIndexPath:indexPath]] animated:YES completion:nil];
+}
+
+#pragma mark - private method
+
+- (AppModel *)appModleAtIndexPath:(NSIndexPath *)indexPath {
+    return [AppModel modelWithName:_appNames[indexPath.item] icon:[UIImage imageNamed:_appIcons[indexPath.item]]];
 }
 
 #pragma mark - gesture response

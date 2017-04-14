@@ -24,4 +24,8 @@
     return model;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"name = \"%@\", icon is %@", _name, _icon];
+}
+
 @end

@@ -8,8 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class UIViewcontrolelr;
 @interface AppDispatchCenter : NSObject
 
 + (instancetype)sharedInstance;
+
+- (void)saveApp:(UIViewcontrolelr *)controller;
+
+- (void)destoryApp:(UIViewcontrolelr *)controller;
+
+- (NSArray *)recentApps;
 
 @end

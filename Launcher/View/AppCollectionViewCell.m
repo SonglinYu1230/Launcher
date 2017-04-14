@@ -50,6 +50,7 @@
 }
 
 - (void)setModel:(AppModel *)model {
+    _model = model;
     _nameLabel.text = model.name;
     if (model.icon) {
         _imageView.backgroundColor = [UIColor clearColor];

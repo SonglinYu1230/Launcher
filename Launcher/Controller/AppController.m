@@ -7,32 +7,32 @@
 //
 
 #import "AppController.h"
-#import "Constant.h"
+#import "AppModel.h"
 
 @interface AppController ()
+
+@property (nonatomic, strong) AppModel *model;
 
 @end
 
 @implementation AppController
 
+- (instancetype)initWithAppModel:(AppModel *)model {
+    NSAssert(model != nil, @"model can't be nil");
+    if (self = [super init]) {
+        _model = model;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSingleTapOnHomeButton) name:kSingleTapOnHomeButton object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDoubleTapOnHomeButton) name:kDoubleTapOnHomeButton object:nil];
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)handleSingleTapOnHomeButton {
-    
-}
-
-- (void)handleDoubleTapOnHomeButton {
-    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    imageView.image = _model.icon;
+    [self.view addSubview:imageView];
+    imageView.center = self.view.center;
 }
 
 @end

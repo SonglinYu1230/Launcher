@@ -67,6 +67,12 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark - private method
+
+- (UIViewController *)rootViewController {
+    return [_window rootViewController];
+}
+
 #pragma mark - gesture response
 
 - (void)handleSingleTapGestureRecognizer:(UITapGestureRecognizer *)gestureRecognizer {
