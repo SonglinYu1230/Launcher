@@ -6,6 +6,7 @@ target 'Launcher' do
   # use_frameworks!
 
   # Pods for Launcher
+  pod 'YYCategories'
   pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 
 end

@@ -9,6 +9,8 @@
 #import "AppDispatchCenter.h"
 #import "Constant.h"
 #import "AppDelegate.h"
+#import "AppController.h"
+#import "AppModel.h"
 
 @interface AppDispatchCenter ()
 
@@ -46,9 +48,35 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)openAppWithAppModel:(AppModel *)model {
+    NSString *appAddress = _appInfo[model.name];
+    BOOL isInMemory = NO;
+//    if (appAddress) {
+//        NSObject *object;
+//        sscanf([appAddress cStringUsingEncoding:NSUTF8StringEncoding], "%p", &object);
+//        if ([object isKindOfClass:[AppController class]]) {
+//            isInMemory = YES;
+//            [[self rootViewController] presentViewController:(AppController *)object animated:YES completion:nil];
+//        }
+//    }
+    if (!isInMemory) {
+        AppController *controller = [[AppController alloc] initWithAppModel:model];
+        controller.modalTransitionStyle = UIModalPresentationCustom;
+        controller.transitioningDelegate = [self rootViewController];
+        [[self rootViewController] presentViewController:controller animated:YES completion:nil];
+        
+        appAddress = [NSString stringWithFormat:@"%p", controller];
+        [self saveAppWithAppName:model.name appAddress:appAddress];
+    }
+}
+
 - (void)saveApp:(UIViewcontrolelr *)controller {
     NSString *addr = [NSString stringWithFormat:@"%p", controller];
     _appInfo[addr] = controller;
+}
+
+- (void)saveAppWithAppName:(NSString *)name appAddress:(NSString *)appAddress {
+    _appInfo[name] = appAddress;
 }
 
 - (void)destoryApp:(UIViewcontrolelr *)controller {
@@ -57,7 +85,7 @@
 }
 
 - (NSArray *)recentApps {
-    return nil;
+    return _appInfo;
 }
 
 #pragma mark - private method

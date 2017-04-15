@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class AppModel;
+@class AppModel, AppCollectionViewCell;
 @interface AppController : UIViewController
+
+@property (nonatomic, strong) UIView *snapView;
 
 - (instancetype)initWithAppModel:(AppModel *)model;
 

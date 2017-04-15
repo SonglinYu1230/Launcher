@@ -1,0 +1,54 @@
+[
+	{
+		"appName": "WeChat",
+		"appIcon": "UMS_wechat_icon"
+	},
+	{
+		"appName": "Email",
+		"appIcon": "UMS_email_icon"
+	},
+	{
+		"appName": "Dictionary",
+		"appIcon": "dictionary"
+	},
+	{
+		"appName": "Music",
+		"appIcon": "music"
+	},
+	{
+		"appName": "Dribble",
+		"appIcon": "dribble"
+	},
+	{
+		"appName": "Reddit",
+		"appIcon": "reddit"
+	},
+	{
+		"appName": "Google",
+		"appIcon": "google"
+	},
+	{
+		"appName": "Twitter",
+		"appIcon": "UMS_twitter_icon"
+	},
+	{
+		"appName": "Instagram",
+		"appIcon": "UMS_instagram"
+	},
+	{
+		"appName": "Pinterest",
+		"appIcon": "UMS_pinterest_icon"
+	},
+	{
+		"appName": "Calender",
+		"appIcon": "calender"
+	},
+	{
+		"appName": "Facebook",
+		"appIcon": "facebook"
+	},
+	{
+		"appName": "Youtube",
+		"appIcon": "youtube"
+	}
+]

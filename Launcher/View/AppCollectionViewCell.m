@@ -23,7 +23,7 @@
     if (!(self = [super initWithFrame:frame])) return nil;
     
     UIView *selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-    selectedBackgroundView.backgroundColor = [UIColor cyanColor];
+//    selectedBackgroundView.backgroundColor = [UIColor cyanColor];
     self.selectedBackgroundView = selectedBackgroundView;
 
     _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];

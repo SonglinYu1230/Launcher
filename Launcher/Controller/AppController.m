@@ -8,6 +8,8 @@
 
 #import "AppController.h"
 #import "AppModel.h"
+#import "YYCategories.h"
+#import "AppCollectionViewCell.h"
 
 @interface AppController ()
 
@@ -21,18 +23,16 @@
     NSAssert(model != nil, @"model can't be nil");
     if (self = [super init]) {
         _model = model;
+        _snapView = [UIView new];
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    imageView.image = _model.icon;
-    [self.view addSubview:imageView];
-    imageView.center = self.view.center;
+    self.view.backgroundColor = [[UIColor colorWithHexString:@"#3B99D8"] colorWithAlphaComponent:0.7];
+    [self.view addSubview:_snapView];
+    _snapView.center = self.view.center;
 }
 
 @end

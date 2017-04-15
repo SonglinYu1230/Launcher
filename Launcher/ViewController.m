@@ -11,10 +11,14 @@
 #import "AppModel.h"
 #import "AppController.h"
 #import "Constant.h"
+#import "AppDispatchCenter.h"
+#import "ScaleTransition.h"
 
 static NSString *kCellIdentifier = @"Cell Identifier";
 
 @interface ViewController ()
+
+@property (nonatomic, strong) AppCollectionViewCell *selectedCell;
 
 @end
 
@@ -32,20 +36,14 @@ static NSString *kCellIdentifier = @"Cell Identifier";
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGestureRecognizer:)];
     [self.collectionView addGestureRecognizer:lpgr];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDoubleTapOnHomeButton) name:kDoubleTapOnHomeButton object:nil];
-    
     // test
 //    NSString *pointerString = [NSString stringWithFormat:@"%p", self];
 //    NSObject *object;
 //    sscanf([pointerString cStringUsingEncoding:NSUTF8StringEncoding], "%p", &object);
-//    NSLog(@"------------------------end---------------------------");
+//    NSLog(@"-----------------------start--------------------------");
 //    NSLog(@"%@", object);
 //    NSLog(@"%@", self);
 //    NSLog(@"------------------------end---------------------------");
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UICollectionViewDataSource Methods
@@ -67,7 +65,20 @@ static NSString *kCellIdentifier = @"Cell Identifier";
 #pragma mark - UICollectionViewDelegate Methods
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self presentViewController:[[AppController alloc] initWithAppModel:[self appModleAtIndexPath:indexPath]] animated:YES completion:nil];
+    AppCollectionViewCell *cell = (AppCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    _selectedCell = cell;
+    
+    [[AppDispatchCenter sharedInstance] openAppWithAppModel:[self appModleAtIndexPath:indexPath]];
+}
+
+#pragma mark - UIViewControllerTransitioningDelegate methods
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
+    return  [[ScaleTransition alloc] initWithScaleTransitionType:ScaleTransitionTypeEnlarge];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
+    return  [[ScaleTransition alloc] initWithScaleTransitionType:ScaleTransitionTypeShrink];
 }
 
 #pragma mark - private method
@@ -96,10 +107,6 @@ static NSString *kCellIdentifier = @"Cell Identifier";
             [self.collectionView cancelInteractiveMovement];
             break;
     }
-}
-
-- (void)handleDoubleTapOnHomeButton {
-    
 }
 
 @end

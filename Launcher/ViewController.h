@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UICollectionViewController
+@class AppCollectionViewCell;
+@interface ViewController : UICollectionViewController <UIViewControllerTransitioningDelegate>
 
+@property (nonatomic, strong, readonly) AppCollectionViewCell *selectedCell;
 
 @end
 

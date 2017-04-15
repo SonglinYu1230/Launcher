@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@class UIViewcontrolelr;
+@class UIViewcontrolelr, AppModel;
 @interface AppDispatchCenter : NSObject
+
+@property (nonatomic, strong) UIViewcontrolelr *topController;
 
 + (instancetype)sharedInstance;
 
-- (void)saveApp:(UIViewcontrolelr *)controller;
+- (void)openAppWithAppModel:(AppModel *)model;
 
 - (void)destoryApp:(UIViewcontrolelr *)controller;
 
